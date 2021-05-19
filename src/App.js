@@ -15,7 +15,7 @@ const config = {
   config: {
     serverMode: "full", // file is just a plain old full sqlite database
     requestChunkSize: 4096, // the page size of the  sqlite database (by default 4096)
-    url: "/assets/foss.sqlite" // url to the database (relative or full)
+    url: process.env.DB_URL // url to the database (relative or full)
   }
 };
 
@@ -40,7 +40,7 @@ const App = () => {
   }
 
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} title="ra-sqlite-dataprovider">
       <Resource {...repositories} />
     </Admin>
   )
