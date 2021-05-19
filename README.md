@@ -2,6 +2,7 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/marmelab/ra-sqlite-dataprovider.svg) ![foss-starter-kit.svg](https://img.shields.io/github/license/marmelab/ra-sqlite-dataprovider.svg)
 
+Following the very motivating blog post of phiresky ["Hosting SQLite databases on Github Pages"](https://phiresky.github.io/blog/2021/hosting-sqlite-databases-on-github-pages/), here is a POC to generate a react-admin administration not relying on an API but directly on a SQLite database hosted on a static server (in this case the Github pages server).
 
 ## Installation
 
