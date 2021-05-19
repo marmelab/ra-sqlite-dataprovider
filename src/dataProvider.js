@@ -30,13 +30,13 @@ const getFilteredCountListQuery = (resource, params) => {
 
 const getTotalFromQueryCount = (result) => result[0].values[0][0]
 
-export default (dbCient) => ({
+export default (dbClient) => ({
   getList: (resource, params) => {
     const { text: countQuery, values: countParams } = getFilteredCountListQuery(
       resource,
       params
     );
-    return dbCient.db
+    return dbClient.db
       .exec(countQuery, countParams)
       .then((countResult) => {
         const total = getTotalFromQueryCount(countResult);
@@ -44,7 +44,7 @@ export default (dbCient) => ({
           resource,
           params
         )
-        return total ? dbCient.db
+        return total ? dbClient.db
           .exec(listQuery, listParams)
           .then((result) => {
             return {

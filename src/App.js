@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Admin, Resource, ListGuesser, Loading } from 'react-admin'
+import { Admin, Resource, Loading } from 'react-admin'
 import { createDbWorker } from 'sql.js-httpvfs'
 
+import { getDbDescription } from './dbDiscover';
 import dataProviderFactory from './dataProvider';
 import repositories from './repositories';
 
@@ -28,6 +29,7 @@ const App = () => {
         [config],
         workerUrl.toString(), wasmUrl.toString()
       );
+      await getDbDescription(worker);
       setDataProvider(dataProviderFactory(worker));
     }
     if (dataProvider === null) {
@@ -40,7 +42,7 @@ const App = () => {
   }
 
   return (
-    <Admin dataProvider={dataProvider} title="ra-sqlite-dataprovider">
+    <Admin dataProvider={dataProvider}>
       <Resource {...repositories} />
     </Admin>
   )
